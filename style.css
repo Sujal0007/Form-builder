@@ -1,0 +1,153 @@
+body {
+  background-color:black ;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.left-div, .right-div {
+  padding: 20px;
+  border: 1px solid #5a5959;
+}
+
+.left-div {
+  width: 20%;
+  background-color: #E68369;
+  /* background-image: url(https://th.bing.com/th/id/R.1ced11261338860d7e83e19f264b1105?rik=xx%2b7iDVGI%2fbZxQ&riu=http%3a%2f%2fwww.designsphere.info%2fwp-content%2fuploads%2f2013%2f01%2ftexture_45_by_voyager168-d5q0pjl-300x169.jpg&ehk=Q9h5CFvT%2ftRT%2b88GH5XD1L8jnfcnSoAiXJzZU5VIfr0%3d&risl=&pid=ImgRaw&r=0); */
+  height: 80vh;
+}
+.left-div h3{
+  color: rgb(21, 21, 21);
+  text-align: center;
+  /* background-color: #969696; */
+  border-radius: 20px;
+  padding: 5px;
+}
+.right-div {
+  width: 80%;
+ /* background-image: url(https://wallpaperaccess.com/full/1754627.jpg); */
+  /* min-height: 400px; */
+  background-color: #131842;
+}
+.right-div h2{
+  color: white;
+}
+
+.draggable-element {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #e7e7e7;
+  cursor: grab;
+  text-align: center;
+}
+.dropped-element {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+label{
+  display: block;
+}
+.element-container{
+  background-color: rgb(154, 152, 152);
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+}
+.delete-button{
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.edit-button{
+  position:absolute;
+  top:2px;
+  right: 30px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  
+}
+
+.modal-content {
+  background-color: #BBE9FF;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  position: relative;
+  line-height: 25px;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#saveButton{
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  background-color: #131313;
+  color: white;
+}
+.form-heading {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #E68369;
+}
+
+#formHeading {
+  width: 25%;
+  padding: 10px;
+  margin-top: 5px;
+}
+#saveFormButton{
+  background-color: #2e215c;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  border: none;
+}
+.saveForm{
+  background-color: #E68369;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.saved-forms{
+  background-color: white;
+  height: 30vh;
+}
+#savedFormsList li{
+  background-color: #836cd7;
+  margin-top:3px ;
+  color: rgb(22, 21, 21);
+  padding: 5px;
+  width: 20%;
+  list-style-type:lower-roman;
+  list-style-type: circle;
+}
