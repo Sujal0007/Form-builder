@@ -52,16 +52,17 @@ export function renderSavedForms() {
         const listItem = document.createElement('li');
         listItem.textContent = form.heading;
         listItem.dataset.formId = form.id;
+        listItem.classList.add('saved-forms')
         listItem.addEventListener('click', function () {
-            previewForm(form);
+            renderForm(form);
         });
         savedFormsList.appendChild(listItem);
     });
 }
 
-function previewForm(form) {
+function renderForm(form) {
     const formBuilder = document.getElementById('form-builder');
-    formBuilder.innerHTML = `<h2>${form.heading}</h2>`;
+    formBuilder.innerHTML = `<h2>${form.heading}</h2>`;~
 
     form.elements.forEach(function (elem) {
         const elementContainer = document.createElement('div');
@@ -117,18 +118,7 @@ function previewForm(form) {
         });
 
         deleteButton.addEventListener('click', function() {
-            const formId = elementContainer.parentElement.dataset.formId;
             elementContainer.remove();
-            removeFromLocalStorage(formId);
         });
-        
-        function removeFromLocalStorage(formId) {
-            let savedForms = JSON.parse(localStorage.getItem('forms')) || [];
-            savedForms = savedForms.filter(function(form) {
-                return form.id !== formId;
-            });
-            localStorage.setItem('forms', JSON.stringify(savedForms));
-        }
-        
     });
 }

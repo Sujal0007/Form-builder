@@ -83,6 +83,8 @@ export function openModal(element) {
         } else if (type === 'radio' || type === 'checkbox') {
             const newOptionInputs = modalForm.querySelectorAll('.option-input');
 
+            const optionsArray = [];
+
             newOptionInputs.forEach(input => {
                 const optionLabel = document.createElement('label');
                 optionLabel.textContent = input.value;
@@ -94,7 +96,11 @@ export function openModal(element) {
                 element.appendChild(optionInput);
                 element.appendChild(optionLabel);
                 element.appendChild(document.createElement('br'));
+
+                optionsArray.push(input.value);
             });
+
+            localStorage.setItem(`${element.querySelector('label').textContent.trim()}-options`, JSON.stringify(optionsArray));
         }
 
         modal.style.display = 'none';
@@ -113,3 +119,4 @@ export function openModal(element) {
         });
     }
 }
+
