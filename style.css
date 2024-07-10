@@ -1,6 +1,5 @@
-body {
-  background-color: #a18a8a;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+*{
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -14,7 +13,7 @@ body {
 
 .left-div {
   width: 20%;
-  background-color: #E68369;
+  background-color: #8d8b8b;
   height: 80vh;
 }
 .left-div h3{
@@ -26,8 +25,8 @@ body {
 }
 .right-div {
   width: 80%;
- 
-  background-color: #131842;
+   background-color: #131313;
+  /* background-color: #131842; */
 }
 .right-div h2{
   color: white;
@@ -53,7 +52,7 @@ label{
 }
 .element-container{
   background-color: rgb(154, 152, 152);
-  margin-top: 10px;
+  margin-top:18px;
   padding: 10px;
   position: relative;
 }
@@ -111,28 +110,22 @@ label{
   background-color: #131313;
   color: white;
 }
-.form-heading {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #E68369;
-}
 
 #formHeading {
   width: 25%;
-  padding: 10px;
-  margin-top: 5px;
+  padding: 5px;
 }
 #saveFormButton{
-  background-color: #2e215c;
+  background-color: #626264;
   padding: 10px;
   text-align: center;
   color: white;
   border: none;
 }
 .saveForm{
-  background-color: #E68369;
+  background-color: #484747;
   padding: 10px;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: center;
 }
@@ -140,17 +133,18 @@ label{
   background-color: #0e0e0e;
   margin-top:3px ;
   color: rgb(248, 237, 237);
-  padding: 5px;
+  padding: 20px;
   height: 100vh;
   width: 60%;
   list-style-type:none;
 }
 .saved-forms{
-  background-color: #5d5755;
+  background-color: #eee6e3;
+  color: black;
   padding: 5%;
   margin-top: 10px;
 }
-.landing-container, .preview-container {
+.preview-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,45 +153,11 @@ label{
   flex-direction: column;
   font-family: "Ga Maamli", sans-serif;
 }
-.landing-container{
-  background-image: url(https://wallpaperaccess.com/full/3873355.jpg);
-  background-size: cover;
-  position: relative;
-}
-.landing-container h1{
-  color: rgb(10, 204, 243);
-  font-size: 72px;
-  background-color: #5a59594a;
-  margin-bottom: 20%;
-}
-.landing-container button{
-  padding: 1.5rem;
-  display: inline-block;
-  margin-top: 5%;
-  border: none;
-  background-color: #11b8eb;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-}
-#previewFormsButton{
-  position: absolute;
-  left: 80px;
-  bottom: 100px;
-  
-  
-}
-#createNewFormButton{
-  position: absolute;
-  right: 80px;
-  bottom: 100px;
-}
 .preview-container{
   position: relative;
 }
 .preview-container h2{
-  color: white;
+  color: rgb(9, 9, 9);
 }
 #backToLandingPage{
   position: absolute;
@@ -207,6 +167,83 @@ label{
   background-color: #0e0e0e;
   color: white;
   border: none;
+}
+#backToLanding{
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  padding: 10px 20px;
+  background-color: #635e5e;
+  color: white;
+  border: none;
+}
+.landing-page{
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+header{
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  /* background-color: #0e0e0e; */
+}
+header img{
+  width:150px;
+  height: 20vh;
+}
+.land-det{
+  /* border: solid; */
+  height: 65vh;
+  line-height: 1.5rem;
+  padding: 10px;
+ }
+ .land-det h1{
+  font-size:2.5rem;
+ }
+ .land-det p{
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 25px;
+  color: #2e215c;
+ }
+ .land-det p span{
+  font-weight: 700;
+  color: #5a5959;
+ }
+ .land-det button{
+  padding: 1rem;
+  margin-top: 10px;
+  color: white;
+  border: none;
+ }
+ #previewFormsButton{
+  background-color: #0070f3;
+ }
+ #createNewFormButton{
+  background-color: #2e2e2e;
+ }
+.land-det h3{
+margin-top: 50px;
+color: rgb(25, 101, 213);
+}
+
+@media (max-width: 480px){
+  .landing-page{
+    flex-direction: column;
+    position: relative;
+    top: 20vh;
+  }
+  .land-det h1{
+    font-size: 1.5rem;
+  }
+  .land-img img{
+    width: 100vw;
+    position: relative;
+    bottom:15vh
+  }
 }
 
 

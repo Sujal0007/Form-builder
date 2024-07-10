@@ -1,6 +1,7 @@
 import './style.css'
+import "@fortawesome/fontawesome-free/css/all.css";
 import { navigate, router } from './router.js';
-import { openModal } from './modal.js';
+import { openModal , addModalTemplate } from './modal.js';
 import { saveForm } from './saveform.js';
 
 const elementsData = [
@@ -12,16 +13,26 @@ const elementsData = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderLandingPage();
+  addModalTemplate();
   router(); 
 });
 
 export function renderLandingPage() {
   const landingPage = `
-    <div class="landing-container">
-      <h1>Welcome to the Form Builder</h1>
-      <button id="previewFormsButton">Preview Saved Forms</button>
-      <button id="createNewFormButton">Create New Form</button>
-    </div>
+  <header><img src="https://th.bing.com/th/id/OIP.wo3HRyPFiRwiEj_C4SDiqAHaFf?rs=1&pid=ImgDetMain" alt=""></header>
+   <div class="landing-page">
+  <div class="land-det">
+    <h1><span>Free!</span> Javascript Form Builder</h1>
+    <p>Javascript can be tricky. That’s why we’ve created a <span>drag-and-drop Javascript Form Builder</span> that lets you create <span>custom contact forms, registration forms, donation forms, and more — </span>without writing a single line of code! Get started for free today.</p>
+    <button id="previewFormsButton">See Existing Forms!</button>
+    <button id="createNewFormButton">Create New!</button>
+    <h3>ITS FREE!!</h3>
+  </div>
+  <div class="land-img">
+    <img src="https://cdn.jotfor.ms/assets/img/landing/minimals/javascript-form-builder/introduction.svg" alt="">
+  </div>
+</div>
   `;
   document.getElementById('app').innerHTML = landingPage;
 
@@ -53,17 +64,19 @@ export function renderFormBuilder() {
         `).join('')}
       </div>
       <div class="right-div" id="form-builder">
-        <h2>Drop the Elements</h2>
+       
+         <div class="form-heading">
+      <input type="text" id="formHeading" placeholder=" Form heading required" required>
+    </div>
+     <h2>Drop the Elements</h2>
       </div>
+     
     </div>
-    <div class="form-heading">
-      <label for="formHeading">Form Heading:</label>
-      <input type="text" id="formHeading" placeholder="Enter form heading" required>
-    </div>
+    
     <div class="saveForm">
       <button id="saveFormButton">Save Form</button>
     </div>
-    <button id="backToLandingPage">Back</button>
+    <button id="backToLanding">Back</button>
   `;
 
   document.getElementById('app').innerHTML = contTemp;
@@ -78,7 +91,7 @@ export function renderFormBuilder() {
   formBuilder.addEventListener('drop', drop);
 
   document.getElementById('saveFormButton').addEventListener('click', saveForm);
-  document.getElementById('backToLandingPage').addEventListener('click', () => navigate('/'));
+  document.getElementById('backToLanding').addEventListener('click', () => navigate('/'));
 
   renderSavedForms();
 }
@@ -153,6 +166,11 @@ function drop(event) {
 
 export function renderSavedForms() {
   const savedFormsList = document.getElementById('savedFormsList');
+  if (!savedFormsList) { 
+    console.error('savedFormsList is null');
+    return;
+  }
+
   savedFormsList.innerHTML = '';
 
   const savedForms = JSON.parse(localStorage.getItem('forms')) || [];
@@ -177,6 +195,7 @@ export function renderSavedFormById(id) {
     document.getElementById('app').innerHTML = '<h1>Form not found</h1>';
     return;
   }
+  renderFormBuilder();
 
   const formBuilder = document.getElementById('form-builder');
   formBuilder.innerHTML = '';
