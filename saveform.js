@@ -1,5 +1,5 @@
 export function saveForm() {
-    const formHeading = document.getElementsByClassName('form-head').value;
+    const formHeading = document.getElementById('formHeading').value;
 
     if (!formHeading) {
         alert('Form heading is required');

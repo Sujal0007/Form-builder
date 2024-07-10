@@ -66,7 +66,7 @@ export function renderFormBuilder() {
       <div class="right-div" id="form-builder">
        
          <div class="form-heading">
-      <input type="text" id="formHeading" placeholder=" Form heading required" required>
+      <input type="text"  id="formHeading" placeholder=" Form heading required" required>
     </div>
      <h2>Drop the Elements</h2>
       </div>
@@ -268,7 +268,7 @@ export function renderSavedFormById(id) {
       elementContainer.remove();
     });
   });
-  // document.getElementById('saveFormButton').addEventListener('click', saveForm);
+  
 }
 
 
