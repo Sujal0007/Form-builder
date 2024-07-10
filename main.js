@@ -195,10 +195,21 @@ export function renderSavedFormById(id) {
     document.getElementById('app').innerHTML = '<h1>Form not found</h1>';
     return;
   }
+  const formHeadingInput = document.getElementById('formHeading');
+  if (formHeadingInput) {
+    formHeadingInput.value = form.heading;
+  }
   renderFormBuilder();
 
   const formBuilder = document.getElementById('form-builder');
   formBuilder.innerHTML = '';
+
+  const formHeadingContainer = document.createElement('div');
+  formHeadingContainer.classList.add('form-heading');
+  formHeadingContainer.innerHTML = `
+    <input type="text" id="formHeading" value="${form.heading}" placeholder="Form heading required" required>
+  `;
+  formBuilder.appendChild(formHeadingContainer);
 
   form.elements.forEach(element => {
     const elementContainer = document.createElement('div');
@@ -257,6 +268,7 @@ export function renderSavedFormById(id) {
       elementContainer.remove();
     });
   });
+  // document.getElementById('saveFormButton').addEventListener('click', saveForm);
 }
 
 
