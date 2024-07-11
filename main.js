@@ -192,14 +192,16 @@ export function renderSavedFormById(id) {
   const form = savedForms.find(f => f.id == id);
 
   if (!form) {
-    document.getElementById('app').innerHTML = '<h1>Form not found</h1>';
-    return;
+      document.getElementById('app').innerHTML = '<h1>Form not found</h1>';
+      return;
   }
+
+  renderFormBuilder();
+
   const formHeadingInput = document.getElementById('formHeading');
   if (formHeadingInput) {
-    formHeadingInput.value = form.heading;
+      formHeadingInput.value = form.heading;
   }
-  renderFormBuilder();
 
   const formBuilder = document.getElementById('form-builder');
   formBuilder.innerHTML = '';
@@ -207,68 +209,71 @@ export function renderSavedFormById(id) {
   const formHeadingContainer = document.createElement('div');
   formHeadingContainer.classList.add('form-heading');
   formHeadingContainer.innerHTML = `
-    <input type="text" id="formHeading" value="${form.heading}" placeholder="Form heading required" required>
+      <input type="text" id="formHeading" value="${form.heading}" placeholder="Form heading required" required>
   `;
   formBuilder.appendChild(formHeadingContainer);
 
   form.elements.forEach(element => {
-    const elementContainer = document.createElement('div');
-    elementContainer.classList.add('element-container');
+      const elementContainer = document.createElement('div');
+      elementContainer.classList.add('element-container');
 
-    const label = document.createElement('label');
-    label.textContent = element.label;
+      const label = document.createElement('label');
+      label.textContent = element.label;
 
-    let newElement;
-    switch (element.type) {
-      case 'input':
-        newElement = document.createElement('input');
-        newElement.setAttribute('type', 'text');
-        newElement.value = element.value;
-        break;
-      case 'button':
-        newElement = document.createElement('button');
-        newElement.textContent = element.value;
-        break;
-      case 'radio':
-        newElement = document.createElement('div');
-        newElement.innerHTML = `<input type="radio" name="radio"><label>${element.value}</label>`;
-        break;
-      case 'checkbox':
-        newElement = document.createElement('div');
-        newElement.innerHTML = `<input type="checkbox"><label>${element.value}</label>`;
-        break;
-      case 'textarea':
-        newElement = document.createElement('textarea');
-        newElement.value = element.value;
-        break;
-      default:
-        return;
-    }
+      let newElement;
+      switch (element.type) {
+          case 'text':
+              newElement = document.createElement('input');
+              newElement.setAttribute('type', 'text');
+              newElement.value = element.placeholder;
+              break;
+          case 'button':
+              newElement = document.createElement('button');
+              newElement.textContent = element.text;
+              break;
+          case 'radio':
+          case 'checkbox':
+              newElement = document.createElement('div');
+              element.options.forEach(option => {
+                  const optionContainer = document.createElement('div');
+                  const inputElement = document.createElement('input');
+                  inputElement.setAttribute('type', element.type);
+                  const optionLabel = document.createElement('label');
+                  optionLabel.textContent = option;
+                  optionContainer.appendChild(inputElement);
+                  optionContainer.appendChild(optionLabel);
+                  newElement.appendChild(optionContainer);
+              });
+              break;
+          case 'textarea':
+              newElement = document.createElement('textarea');
+              newElement.value = element.placeholder;
+              break;
+          default:
+              return;
+      }
 
-    const editButton = document.createElement('button');
-    editButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
-    editButton.classList.add('edit-button');
+      const editButton = document.createElement('button');
+      editButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
+      editButton.classList.add('edit-button');
 
-    const deleteButton = document.createElement('button');
-    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    deleteButton.classList.add('delete-button');
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+      deleteButton.classList.add('delete-button');
 
-    elementContainer.appendChild(label);
-    elementContainer.appendChild(newElement);
-    elementContainer.appendChild(editButton);
-    elementContainer.appendChild(deleteButton);
+      elementContainer.appendChild(label);
+      elementContainer.appendChild(newElement);
+      elementContainer.appendChild(editButton);
+      elementContainer.appendChild(deleteButton);
 
-    formBuilder.appendChild(elementContainer);
+      formBuilder.appendChild(elementContainer);
 
-    editButton.addEventListener('click', () => {
-      openModal(elementContainer);
-    });
+      editButton.addEventListener('click', () => {
+          openModal(elementContainer);
+      });
 
-    deleteButton.addEventListener('click', function() {
-      elementContainer.remove();
-    });
+      deleteButton.addEventListener('click', function () {
+          elementContainer.remove();
+      });
   });
-  
 }
-
-

@@ -19,6 +19,14 @@ export function saveForm() {
             const inputElement = elem.querySelector('input');
             elementData.type = inputElement.type;
             elementData.placeholder = inputElement.getAttribute('placeholder') || '';
+            if (inputElement.type === 'radio' || inputElement.type === 'checkbox') {
+                const options = [];
+                const optionLabels = elem.querySelectorAll('label');
+                optionLabels.forEach(label => {
+                    options.push(label.textContent);
+                });
+                elementData.options = options;
+            }
         } else if (elem.querySelector('textarea')) {
             const textareaElement = elem.querySelector('textarea');
             elementData.type = 'textarea';
