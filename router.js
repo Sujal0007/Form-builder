@@ -1,10 +1,11 @@
-import { renderLandingPage, renderPreviewPage, renderFormBuilder, renderSavedFormById } from './main.js';
+import { renderLandingPage, renderPreviewPage, renderFormBuilder, renderSavedFormById, renderFormPreview } from './main.js';
 
 const routes = {
   '/': renderLandingPage,
   '/preview': renderPreviewPage,
   '/create': renderFormBuilder,
-  '/form/:id': renderSavedFormById
+  '/form/:id': renderSavedFormById,
+  '/form-preview/:id': renderFormPreview
 };
 
 function getRoute() {
@@ -14,6 +15,11 @@ function getRoute() {
     const parts = path.split('/');
     if (parts.length === 3) {
       return { path: '/form/:id', id: parts[2] };
+    }
+  } else if (path.startsWith('/form-preview/')) {
+    const parts = path.split('/');
+    if (parts.length === 3) {
+      return { path: '/form-preview/:id', id: parts[2] };
     }
   }
 
@@ -28,7 +34,7 @@ export function router() {
   const { path, id } = getRoute();
   const route = routes[path] || renderLandingPage;
 
-  if (path === '/form/:id') {
+  if (path === '/form/:id' || path === '/form-preview/:id') {
     route(id);
   } else {
     route();
@@ -36,3 +42,4 @@ export function router() {
 }
 
 window.addEventListener('popstate', router);
+

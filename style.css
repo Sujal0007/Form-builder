@@ -1,12 +1,16 @@
-*{
-  font-family: "Roboto", sans-serif;
+* {
+  font-family: "Bona Nova SC", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
   display: flex;
 }
 
-.left-div, .right-div {
+.left-div,
+.right-div {
   padding: 20px;
   border: 1px solid #5a5959;
 }
@@ -14,21 +18,22 @@
 .left-div {
   width: 20%;
   background-color: #8d8b8b;
-  height: 80vh;
+  height: 90vh;
 }
-.left-div h3{
+.left-div h3 {
   color: rgb(21, 21, 21);
   text-align: center;
-  
+
   border-radius: 20px;
   padding: 5px;
 }
 .right-div {
   width: 80%;
-   background-color: #131313;
+  background-color: #131313;
+  height: 90vh;
   /* background-color: #131842; */
 }
-.right-div h2{
+.right-div h2 {
   color: white;
 }
 
@@ -47,23 +52,23 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-label{
+label {
   display: block;
 }
-.element-container{
+.element-container {
   background-color: rgb(154, 152, 152);
-  margin-top:18px;
+  margin-top: 18px;
   padding: 10px;
   position: relative;
 }
-.delete-button{
+.delete-button {
   position: absolute;
   top: 2px;
   right: 2px;
 }
-.edit-button{
-  position:absolute;
-  top:2px;
+.edit-button {
+  position: absolute;
+  top: 2px;
   right: 30px;
 }
 .modal {
@@ -75,12 +80,11 @@ label{
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-  
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-  background-color: #BBE9FF;
+  background-color: #bbe9ff;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -98,12 +102,12 @@ label{
   font-weight: bold;
 }
 
-.close:hover{
+.close:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-#saveButton{
+#saveButton {
   padding: 5px 10px;
   margin-top: 10px;
   border: none;
@@ -115,52 +119,231 @@ label{
   width: 25%;
   padding: 5px;
 }
-#saveFormButton{
+#saveFormButton {
   background-color: #626264;
   padding: 10px;
   text-align: center;
   color: white;
   border: none;
 }
-.saveForm{
+.saveForm {
   background-color: #918f8f;
   padding: 10px;
   /* width: 100%; */
   display: flex;
   justify-content: center;
 }
-#savedFormsList{
-  background-color: #0e0e0e;
-  margin-top:3px ;
+#savedFormsList {
+  /* background-color: #0e0e0e; */
+  margin-top: 3px;
   color: rgb(248, 237, 237);
   padding: 20px;
-  height: 100vh;
-  width: 60%;
-  list-style-type:none;
+  /* height: 100vh; */
+  width: 90%;
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
-.saved-forms{
-  background-color: #eee6e3;
-  color: black;
+.saved-forms {
+  background: rgb(156, 153, 152);
+  background: linear-gradient(
+    90deg,
+    rgba(227, 100, 100, 0.676) 0%,
+    rgba(201, 145, 68, 0.603) 64%,
+    rgba(226, 163, 17, 0.779) 99%
+  );
+  color: rgb(255, 254, 254);
   padding: 5%;
   margin-top: 10px;
+  width: 30%;
+  height: 30%;
+  border-radius: 5px;
+}
+.saved-forms:hover{
+  transform: scale(1.1);
+  transition: 0.5s;
+  background-color: #0056b3;
 }
 .preview-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 97vh;
-  width: 100%;
-  flex-direction: column;
+  height: 90vh;
+  width: 100vw;
+  padding: 10px;
+  /* flex-direction: column; */
   font-family: "Ga Maamli", sans-serif;
-  /* background-color: #a9a9a9; */
+  background-image: linear-gradient( 174.2deg,  rgb(244, 213, 166) 7.1%, rgba(240,246,238,1) 67.4% );
+
 }
-.preview-container{
-  position: relative;
+.preview-container {
+  position: absolute;
+  top: 10vh;
 }
-.preview-container h2{
-  color: rgb(9, 9, 9);
+.preview-container h1{
+  color: rgb(14, 14, 14);
 }
-#backToLandingPage{
+
+.landing-page {
+  background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+header {
+  width: 100%;
+  height: 10vh;
+  /* position: fixed; */
+  display: flex;
+  z-index: 111;
+  background-color: #f4eee7;
+
+  /* background-color:#433D8B; */
+  /* color: white; */
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: #0e0e0e; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+header img {
+  width: 150px;
+  height: 10vh;
+  /* height: 20vh; */
+  color: white;
+  mix-blend-mode: multiply;
+}
+.right button {
+  padding: 10px;
+  margin-left: 30px;
+  border: none;
+  background-color: #1b1c1c;
+  color: white;
+  border-radius: 5px;
+}
+.center ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.land-det {
+  height: 65vh;
+
+  padding: 10px;
+}
+.land-det h1 {
+  font-size: 2rem;
+
+  -webkit-text-fill-color: hsla(0, 0%, 100%, 0);
+  background: linear-gradient(90.09deg, #0c81ee, #f9185b);
+  /* -webkit-background-clip: text; */
+  background-clip: text;
+}
+.land-det p {
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 25px;
+  color: #111112;
+}
+.land-det p span {
+  font-weight: 700;
+  -webkit-text-fill-color: hsla(0, 0%, 100%, 0);
+  background: linear-gradient(90.09deg, #a8a8aa, #d68821);
+  /* -webkit-background-clip: text; */
+  background-clip: text;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
+.land-det button {
+  padding: 1rem 3rem;
+  margin-top: 30px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.land-det button:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+#previewFormsButton {
+  background-color: #0070f3;
+  font-size: 20px;
+}
+#createNewFormButton {
+  background-color: #171717;
+  color: #e2dada;
+  font-size: 20px;
+}
+.land-det h3 {
+  margin-top: 50px;
+  color: rgb(245, 246, 248);
+  display: none;
+}
+.form-head {
+  color: white;
+  font-size: 30px;
+}
+.form-preview {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.form-preview h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-preview .element-container {
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.form-preview label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-preview input[type="text"],
+.form-preview textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-preview input[type="radio"],
+.form-preview input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.form-preview button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.form-preview button:hover {
+  background-color: #0056b3;
+}
+
+#backToLandingPage {
   position: absolute;
   top: 20px;
   right: 50px;
@@ -168,8 +351,9 @@ label{
   background-color: #0e0e0e;
   color: white;
   border: none;
+  display: none; 
 }
-#backToLanding{
+#backToLanding {
   position: absolute;
   top: 20px;
   right: 30px;
@@ -178,80 +362,22 @@ label{
   color: white;
   border: none;
 }
-.landing-page{
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 97vh;
-}
-header{
-  width: 100%;
-  height: 10vh;
-  position: fixed;
-  /* background-color: #0e0e0e; */
-}
-header img{
-  width:150px;
-  height: 20vh;
-}
-.land-det{
-  /* border: solid; */
-  height: 65vh;
-  line-height: 1.5rem;
-  padding: 10px;
- }
- .land-det h1{
-  font-size:2.5rem;
- }
- .land-det p{
-  margin-top: 40px;
-  font-size: 20px;
-  line-height: 25px;
-  color: #2e215c;
- }
- .land-det p span{
-  font-weight: 700;
-  color: #5a5959;
- }
- .land-det button{
-  padding: 1rem;
-  margin-top: 10px;
-  color: white;
-  border: none;
- }
- #previewFormsButton{
-  background-color: #0070f3;
- }
- #createNewFormButton{
-  background-color: #2e2e2e;
- }
-.land-det h3{
-margin-top: 50px;
-color: rgb(25, 101, 213);
-}
-.form-head{
-  color: white;
-  font-size: 30px;
+header li:hover{
+  cursor: pointer;
 }
 
-@media (max-width: 480px){
-  .landing-page{
+@media (max-width: 480px) {
+  .landing-page {
     flex-direction: column;
     position: relative;
     top: 20vh;
   }
-  .land-det h1{
+  .land-det h1 {
     font-size: 1.5rem;
   }
-  .land-img img{
+  .land-img img {
     width: 100vw;
     position: relative;
-    bottom:15vh
+    bottom: 15vh;
   }
 }
-
-
-
-
- 
