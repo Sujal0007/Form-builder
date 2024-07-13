@@ -121,6 +121,9 @@ export function renderFormBuilder() {
         `
           )
           .join("")}
+          <div class="saveForm">
+      <button id="saveFormButton">Save Form</button>
+    </div>
       </div>
       <div class="right-div" id="form-builder">
        
@@ -132,9 +135,7 @@ export function renderFormBuilder() {
      
     </div>
     
-    <div class="saveForm">
-      <button id="saveFormButton">Save Form</button>
-    </div>
+    
   `;
 
   document.getElementById("app").innerHTML = contTemp;
@@ -176,9 +177,7 @@ function drop(event) {
   elementContainer.classList.add("element-container");
 
   const label = document.createElement("label");
-  label.textContent = `${
-    dataType.charAt(0).toUpperCase() + dataType.slice(1)
-  }:`;
+  label.textContent = `${dataType.charAt(0).toUpperCase() + dataType.slice(1)}:`;
 
   let newElement;
   switch (dataType) {
@@ -192,12 +191,13 @@ function drop(event) {
       break;
     case "radio":
       newElement = document.createElement("div");
-      newElement.innerHTML =
-        '<input type="radio" name="radio"><label>Option 1</label>';
+      newElement.innerHTML = '<input type="radio" name="radio"><label>Option 1</label>';
+      newElement.options = ["Option 1"];
       break;
     case "checkbox":
       newElement = document.createElement("div");
       newElement.innerHTML = '<input type="checkbox"><label>Option 1</label>';
+      newElement.options = ["Option 1"];
       break;
     case "textarea":
       newElement = document.createElement("textarea");
@@ -231,6 +231,7 @@ function drop(event) {
   });
 }
 
+
 export function renderSavedForms() {
   const savedFormsList = document.getElementById("savedFormsList");
   if (!savedFormsList) {
@@ -251,7 +252,7 @@ export function renderSavedForms() {
       navigate(`/form-preview/${form.id}`);
     });
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add('deleteButton')
+    deleteButton.classList.add("deleteButton");
     deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     deleteButton.addEventListener("click", function (event) {
       event.stopPropagation();
@@ -400,15 +401,17 @@ export function renderFormPreview(id) {
     const elementContainer = document.createElement("div");
     elementContainer.classList.add("element-container");
 
-    const label = document.createElement("label");
-    label.textContent = element.label;
-
     let newElement;
     switch (element.type) {
       case "text":
         newElement = document.createElement("input");
         newElement.setAttribute("type", "text");
         newElement.value = element.placeholder;
+
+        const textLabel = document.createElement("label");
+        textLabel.textContent = element.label || "Default Text Label";
+        elementContainer.appendChild(textLabel);
+
         break;
       case "button":
         newElement = document.createElement("button");
@@ -431,12 +434,16 @@ export function renderFormPreview(id) {
       case "textarea":
         newElement = document.createElement("textarea");
         newElement.value = element.placeholder;
+
+        const textareaLabel = document.createElement("label");
+        textareaLabel.textContent = element.label || "Default Textarea Label";
+        elementContainer.appendChild(textareaLabel);
+
         break;
       default:
         return;
     }
 
-    elementContainer.appendChild(label);
     elementContainer.appendChild(newElement);
     formElement.appendChild(elementContainer);
   });

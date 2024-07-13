@@ -13,9 +13,7 @@ export function saveForm() {
   formElements.forEach(function (elem) {
     const elementData = {};
     if (elem.querySelector("label")) {
-      elementData.label = elem
-        .querySelector("label")
-        .textContent.replace(":", "");
+      elementData.label = elem.querySelector("label").textContent.replace(":", "");
     }
     if (elem.querySelector("input")) {
       const inputElement = elem.querySelector("input");
@@ -32,8 +30,7 @@ export function saveForm() {
     } else if (elem.querySelector("textarea")) {
       const textareaElement = elem.querySelector("textarea");
       elementData.type = "textarea";
-      elementData.placeholder =
-        textareaElement.getAttribute("placeholder") || "";
+      elementData.placeholder = textareaElement.getAttribute("placeholder") || "";
     } else if (elem.querySelector("button")) {
       const buttonElement = elem.querySelector("button");
       elementData.type = "button";

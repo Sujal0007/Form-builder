@@ -31,7 +31,6 @@
   width: 80%;
   background-color: #131313;
   height: 90vh;
-  /* background-color: #131842; */
 }
 .right-div h2 {
   color: white;
@@ -120,7 +119,7 @@ label {
   padding: 5px;
 }
 #saveFormButton {
-  background-color: #626264;
+  background-color: #0c0c0c;
   padding: 10px;
   text-align: center;
   color: white;
@@ -129,9 +128,10 @@ label {
 .saveForm {
   background-color: #918f8f;
   padding: 10px;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 10vh;
 }
 #savedFormsList {
   /* background-color: #0e0e0e; */
@@ -383,7 +383,9 @@ header li:hover{
   color: red;
   background-color: orange;
 }
-
+.deleteButton:hover{
+  cursor: pointer;
+}
 @media (max-width: 480px) {
   .landing-page {
     flex-direction: column;
