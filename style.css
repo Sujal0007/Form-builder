@@ -387,10 +387,20 @@ header li:hover{
   cursor: pointer;
 }
 @media (max-width: 480px) {
+  .right{
+    display: none;
+  }
+  .center{
+    margin-right: 10px;
+  }
   .landing-page {
     flex-direction: column;
     position: relative;
     top: 20vh;
+  }
+  .land-det{
+    position: relative;
+    bottom: 18vh;
   }
   .land-det h1 {
     font-size: 1.5rem;
@@ -399,5 +409,12 @@ header li:hover{
     width: 100vw;
     position: relative;
     bottom: 15vh;
+  }
+  .saved-forms{
+    width: fit-content;
+    padding: 20px;
+  }
+  .left-div{
+    width: 35%;
   }
 }
