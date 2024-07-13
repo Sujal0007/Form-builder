@@ -159,6 +159,7 @@ label {
   width: 30%;
   height: 30%;
   border-radius: 5px;
+  position: relative;
 }
 .saved-forms:hover{
   transform: scale(1.1);
@@ -364,6 +365,23 @@ header img {
 }
 header li:hover{
   cursor: pointer;
+}
+#editFormButton{
+  position: absolute;
+  top: 15vh;
+  right: 13vw;
+  padding: 0.5rem;
+  border: none;
+  background-color:#0b0b0b;
+  color: white;
+}
+.deleteButton{
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  background-color: orange;
 }
 
 @media (max-width: 480px) {

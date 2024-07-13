@@ -53,8 +53,12 @@ export function renderLandingPage() {
     .getElementById("createNewFormButton")
     .addEventListener("click", () => navigate("/create"));
 
-    document.querySelector('.home').addEventListener("click", () => navigate("/"));
-  document.querySelector('.templates').addEventListener("click", () => navigate("/preview"));
+  document
+    .querySelector(".home")
+    .addEventListener("click", () => navigate("/"));
+  document
+    .querySelector(".templates")
+    .addEventListener("click", () => navigate("/preview"));
 }
 
 export function renderPreviewPage() {
@@ -82,8 +86,12 @@ export function renderPreviewPage() {
     .addEventListener("click", () => navigate("/"));
   renderSavedForms();
 
-  document.querySelector('.home').addEventListener("click", () => navigate("/"));
-  document.querySelector('.templates').addEventListener("click", () => navigate("/preview"));
+  document
+    .querySelector(".home")
+    .addEventListener("click", () => navigate("/"));
+  document
+    .querySelector(".templates")
+    .addEventListener("click", () => navigate("/preview"));
 
   renderSavedForms();
 }
@@ -141,11 +149,13 @@ export function renderFormBuilder() {
   formBuilder.addEventListener("drop", drop);
 
   document.getElementById("saveFormButton").addEventListener("click", saveForm);
- 
-  document.querySelector('.home').addEventListener("click", () => navigate("/"));
-  document.querySelector('.templates').addEventListener("click", () => navigate("/preview"));
 
-  
+  document
+    .querySelector(".home")
+    .addEventListener("click", () => navigate("/"));
+  document
+    .querySelector(".templates")
+    .addEventListener("click", () => navigate("/preview"));
 
   renderSavedForms();
 }
@@ -240,9 +250,27 @@ export function renderSavedForms() {
     listItem.addEventListener("click", function () {
       navigate(`/form-preview/${form.id}`);
     });
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add('deleteButton')
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    deleteButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+      if (confirm("Are you sure you want to delete this form?")) {
+        deleteForm(form.id);
+        renderPreviewPage();
+      }
+    });
+    listItem.appendChild(deleteButton);
 
     savedFormsList.appendChild(listItem);
   });
+}
+
+function deleteForm(formId) {
+  let savedForms = JSON.parse(localStorage.getItem("forms")) || [];
+  savedForms = savedForms.filter((form) => form.id !== formId);
+  localStorage.setItem("forms", JSON.stringify(savedForms));
+  alert("Form deleted");
 }
 
 export function renderSavedFormById(id) {
@@ -359,8 +387,9 @@ export function renderFormPreview(id) {
       <form id="previewForm">
       </form>
       
+      
     </div>
-   
+    <button id="editFormButton">Edit Template</button>
   `;
 
   document.getElementById("app").innerHTML = formPreview;
@@ -412,7 +441,14 @@ export function renderFormPreview(id) {
     formElement.appendChild(elementContainer);
   });
 
+  document
+    .querySelector(".home")
+    .addEventListener("click", () => navigate("/"));
+  document
+    .querySelector(".templates")
+    .addEventListener("click", () => navigate("/preview"));
 
-    document.querySelector('.home').addEventListener("click", () => navigate("/"));
-  document.querySelector('.templates').addEventListener("click", () => navigate("/preview"));
+  document.getElementById("editFormButton").addEventListener("click", () => {
+    navigate(`/form/${id}`);
+  });
 }
